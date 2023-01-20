@@ -31,7 +31,7 @@ def load():
 
     print('Jaky pribeh chcete nacist?')
     for index, file in enumerate(files):
-        fileName = file.split('\\')[1].split('.')[0]
+        fileName = os.path.normpath(file).replace('/', '\\').split('\\')[1].split('.')[0]
         print(f'{index}: {fileName}')
 
     print('\n')
