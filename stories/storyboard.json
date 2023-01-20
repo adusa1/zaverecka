@@ -141,7 +141,9 @@
 						0
 					],
 					"gives": [],
-					"takes": [0],
+					"takes": [
+						0
+					],
 					"unlocks": [],
 					"hidden": false,
 					"repeatable": false
