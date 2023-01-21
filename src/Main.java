@@ -1,27 +1,29 @@
-import java.io.FileReader;
+import java.io.*;
 import java.util.*;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+
 import org.json.simple.JSONObject;
 import org.json.simple.JSONArray;
 import org.json.simple.parser.ParseException;
 import org.json.simple.parser.JSONParser;
 
 public class Main {
-    static JSONArray scenes;
     static JSONArray inv;
     static JSONArray used;
     static JSONArray found;
+    static JSONObject data = null;
+    static JSONArray rooms = null;
+    static JSONArray items = null;
     List<List<Integer>> lists = new ArrayList<>();
 
     public static void main(String[] args) {
+        int textload = 0, roomLoad = 0;
+
         File stories = new File("stories");
-        if (!stories.exists()){
+        if (!stories.exists()) {
             stories.mkdirs();
         }
         File saves = new File("saves");
-        if (!saves.exists()){
+        if (!saves.exists()) {
             saves.mkdirs();
         }
 
@@ -36,33 +38,34 @@ public class Main {
             }
         }
 
-        if (results.size() == 0){
+        if (results.size() == 0) {
             System.out.println("Zadne nalezene pribehy.");
             System.exit(0);
         }
 
         System.out.println("Zadejte cislo pribehu, ktery chcete vybrat:");
-        for (int i = 0; i < results.size(); i++){
+        for (int i = 0; i < results.size(); i++) {
             System.out.println(i + ": " + results.get(i));
         }
 
         Scanner sc = new Scanner(System.in);
         int story = -2;
-        if (sc.hasNextLine())
+        if (sc.hasNextLine()) {
             try {
                 story = sc.nextInt();
             } catch (Exception e) {
                 System.out.println("Zadali jste neplatne cislo pribehu.");
                 System.exit(0);
             }
+        }
         sc.nextLine();
-        if (story >= results.size() || story < 0){
+        if (story >= results.size() || story < 0) {
             System.out.println("Neplatne cislo pribehu.");
             System.exit(0);
         }
         String storyName = results.get(story);
 
-        if (!storyName.contains(".json")){
+        if (!storyName.contains(".json")) {
             System.out.println("Neplatny pribeh.");
             System.exit(0);
         }
@@ -72,7 +75,8 @@ public class Main {
         try {
             File myObj = new File("stories/" + storyName);
             Scanner myReader = new Scanner(myObj);
-            while (myReader.hasNextLine()) {;
+            while (myReader.hasNextLine()) {
+                ;
                 json.append(myReader.nextLine());
             }
             myReader.close();
@@ -83,13 +87,13 @@ public class Main {
         }
 
         JSONParser parser = new JSONParser();
-        JSONObject mainJson = null;
         try {
             Object storyObj = parser.parse(json.toString());
-            mainJson = (JSONObject) storyObj;
-            if (mainJson.containsKey("story") && mainJson.containsKey("inventory") && mainJson.containsKey("id") && mainJson.containsKey("name")){
-                scenes = (JSONArray) mainJson.get("story");
-                System.out.println("Nacteno: " + mainJson.get("name"));
+            data = (JSONObject) storyObj;
+            if (data.containsKey("story") && data.containsKey("inventory") && data.containsKey("id") && data.containsKey("name")) {
+                rooms = (JSONArray) data.get("story");
+                items = (JSONArray) data.get("inventory");
+                System.out.println("Nacteno: " + data.get("name"));
             } else {
                 System.out.println("Neplatny pribeh.");
                 System.exit(0);
@@ -100,41 +104,312 @@ public class Main {
             System.exit(1);
         }
 
-        File save = new File("saves/" + mainJson.get("id") + ".json");
+        boolean success = false;
+        File save = new File("saves/" + data.get("id") + ".json");
         JSONParser saveParser = new JSONParser();
         Object saveObj = null;
         try {
-            if (save.exists()){
-                saveObj = saveParser.parse(new FileReader("saves/" + mainJson.get("id") + ".json"));
+            if (save.exists()) {
+                saveObj = saveParser.parse(new FileReader("saves/" + data.get("id") + ".json"));
                 JSONObject saveJson = (JSONObject) saveObj;
-                if (saveJson.containsKey("inventory") && saveJson.containsKey("used") && saveJson.containsKey("found") && saveJson.containsKey("roomNmb") && saveJson.containsKey("textNmb")){
-                    inv = (JSONArray) saveJson.get("inventory");
+                if (saveJson.containsKey("inv") && saveJson.containsKey("used") && saveJson.containsKey("found") && saveJson.containsKey("roomNmb") && saveJson.containsKey("textNmb")) {
+                    inv = (JSONArray) saveJson.get("inv");
                     used = (JSONArray) saveJson.get("used");
                     found = (JSONArray) saveJson.get("found");
+                    roomLoad = ((Long) saveJson.get("roomNmb")).intValue();
+                    textload = ((Long) saveJson.get("textNmb")).intValue();
+                    success = true;
                 } else {
                     System.out.println("Neplatny save.");
-                    System.exit(0);
                 }
-            } else {
-                inv = (JSONArray) mainJson.get("inventory");
+            }
+            if (!success) {
+                inv = new JSONArray();
                 used = new JSONArray();
                 found = new JSONArray();
+
+                System.out.println("Nacteni deafultnich dat dokonceno!");
             }
         } catch (ParseException | IOException e) {
             e.printStackTrace();
             System.out.println("An error occurred while parsing JSON save file, exiting...");
             System.exit(1);
         }
-
+        tell(roomLoad, textload);
     }
 
-    static class cls {
-        public cls() throws IOException {
-            System.out.println("\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r");
+    public static void save(int roomNmb, int textNmb, boolean reset) {
+        new cls();
+        System.out.println("Ukladani hry...");
+
+        File saves = new File("saves");
+        if (!saves.exists()) {
+            saves.mkdirs();
+        }
+
+        if (reset) {
+            inv = new JSONArray();
+            used = new JSONArray();
+            found = new JSONArray();
+            roomNmb = 0;
+            textNmb = 0;
+        }
+
+        JSONObject saveJson = new JSONObject();
+        saveJson.put("inv", inv);
+        saveJson.put("used", used);
+        saveJson.put("found", found);
+        saveJson.put("roomNmb", roomNmb);
+        saveJson.put("textNmb", textNmb);
+        try (FileWriter file = new FileWriter("saves/" + data.get("id") + ".json")) {
+            file.write(saveJson.toJSONString());
+            file.flush();
+
+            System.out.println("Ulozeno!");
+            if (reset) {
+                System.out.println("Hra byla resetovana!");
+                System.exit(69);
+            }
+        } catch (IOException e) {
+            System.out.println("An error occurred while saving game...");
+            e.printStackTrace();
+        }
+        tell(roomNmb, textNmb, true, "Hra byla ulozena!");
+    }
+
+    public static void inventory(int roomNmb, int textNmb) {
+        new cls();
+        System.out.println("Polozky v inventari:");
+
+        if (inv.size() == 0) {
+            System.out.println("V inventari nic neni.");
+        } else {
+            for (Object o : inv) {
+                int id = ((Long) o).intValue();
+                JSONObject item = (JSONObject) items.get(id);
+                System.out.println(item.get("name") + ": " + item.get("text"));
+            }
+        }
+        Scanner sc = new Scanner(System.in);
+        sc.nextLine();
+        tell(roomNmb, textNmb, true, "");
+    }
+
+    public static void tell(int roomNmb, int textNmb) {
+        tell(roomNmb, textNmb, false, "");
+    }
+
+    public static void tell(int roomNmb, int textNmb, boolean skip, String message) {
+        JSONObject room = (JSONObject) rooms.get(roomNmb);
+        JSONArray texts = (JSONArray) room.get("texts");
+        JSONObject text = (JSONObject) texts.get(textNmb);
+        JSONArray answers = (JSONArray) room.get("answers");
+
+        new cls();
+
+        System.out.println("Nachazis se v: " + room.get("name"));
+
+        // letter by letter printing of text
+        if (!skip) {
+            String textToPrint = (String) text.get("text");
+            char[] longWait = {'.', ',', '?', '!', ';'};
+            for (int i = 0; i < textToPrint.length(); i++) {
+                char c = textToPrint.charAt(i);
+                System.out.print(c);
+                System.out.flush();
+                try {
+                    if (new String(longWait).contains(String.valueOf(c))) {
+                        Thread.sleep(300);
+                    } else {
+                        Thread.sleep(40);
+                    }
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+            System.out.println();
+        } else {
+            System.out.println(text.get("text"));
+        }
+        System.out.println();
+        List<Integer> answery = new ArrayList<>();
+        answery.add(-1);
+        answery.add(-2);
+        answery.add(-3);
+
+        System.out.println("-1: Ulozit");
+        System.out.println("-2: Ukoncit");
+        System.out.println("-3: Inventar");
+
+        System.out.println();
+
+        Hashtable<Integer, Integer> link = new Hashtable<Integer, Integer>();
+        int deductable = 0;
+
+        JSONArray tanswers = (JSONArray) text.get("answers");
+
+        for (int ine = 0; ine < tanswers.size(); ine++) {
+            int answerNmb = ((Long) tanswers.get(ine)).intValue();
+            int iny = ine - deductable;
+            JSONObject answer = (JSONObject) answers.get(answerNmb);
+            String toCompare = roomNmb + "-" + answerNmb + "-";
+
+            if (!(boolean) answer.get("repeatable")) {
+                boolean skipy = false;
+                for (Object o : used) {
+                    StringBuilder sb = new StringBuilder();
+                    JSONArray foundArray = (JSONArray) o;
+                    for (Object o1 : foundArray) {
+                        sb.append(o1.toString());
+                        sb.append("-");
+                    }
+                    if (sb.toString().equals(toCompare)) {
+                        skipy = true;
+                        break;
+                    }
+                }
+                if (skipy) {
+                    deductable++;
+                    continue;
+                }
+            }
+
+            if ((boolean) answer.get("hidden")) {
+                boolean skipy = true;
+                for (Object o : found) {
+                    StringBuilder sb = new StringBuilder();
+                    JSONArray foundArray = (JSONArray) o;
+                    for (Object o1 : foundArray) {
+                        sb.append(o1.toString());
+                        sb.append("-");
+                    }
+                    if (sb.toString().equals(toCompare)) {
+                        skipy = false;
+                        break;
+                    }
+                }
+                if (skipy) {
+                    deductable++;
+                    continue;
+                }
+            }
+
+            JSONArray required = (JSONArray) answer.get("requires");
+            Set<Integer> s = new HashSet<Integer>();
+            for (Object j : inv) {
+                int item = ((Long) j).intValue();
+                s.add(item);
+            }
+            int p = s.size();
+            for (Object j : required) {
+                int item = ((Long) j).intValue();
+                s.add(item);
+            }
+
+            if (s.size() == p) {
+                System.out.println(iny + ": " + answer.get("text"));
+                link.put(iny, answerNmb);
+                answery.add(iny);
+                continue;
+            }
+
+            ArrayList<String> itemy = new ArrayList<>();
+            ArrayList<String> itemyMissing = new ArrayList<>();
+
+            for (Object itemNmbTmp : (JSONArray) answer.get("requires")) {
+                int itemNmb = ((Long) itemNmbTmp).intValue();
+                itemy.add((String) ((JSONObject) items.get(itemNmb)).get("name"));
+                if (!inv.contains((long) itemNmb)) {
+                    itemyMissing.add((String) ((JSONObject) items.get(itemNmb)).get("name"));
+                }
+            }
+            String requires = String.join(" a ", itemy);
+            String missing = String.join(", ", itemyMissing);
+            System.out.println("*: " + answer.get("text") + " (Vyzaduje " + requires + ", chybi " + missing + ")");
+        }
+
+        System.out.println();
+        System.out.println(message.equals("") ? "" : message);
+
+        int answerNmb;
+        while (true) {
+            Scanner sc = new Scanner(System.in);
+            try {
+                answerNmb = sc.nextInt();
+                if (!answery.contains(answerNmb)) {
+                    throw new Exception();
+                }
+            } catch (Exception e) {
+                System.out.println("\033[A\033[A");
+                System.out.println("\033[A\033[A");
+                System.out.println("Neplatne cislo odpovedi!");
+                continue;
+            }
+            break;
+        }
+
+        switch (answerNmb) {
+            case -1 -> save(roomNmb, textNmb, false);
+            case -2 -> System.exit(5318008);
+            case -3 -> inventory(roomNmb, textNmb);
+            default -> {
+                JSONObject answer = (JSONObject) answers.get(link.get(answerNmb));
+                for (Object itemNmbTmp : (JSONArray) answer.get("gives")) {
+                    int itemNmb = ((Long) itemNmbTmp).intValue();
+                    if (!inv.contains((long) itemNmb)) {
+                        inv.add((long) itemNmb);
+                    }
+                }
+                for (Object itemNmbTmp : (JSONArray) answer.get("takes")) {
+                    int itemNmb = ((Long) itemNmbTmp).intValue();
+                    if (inv.contains((long) itemNmb)) {
+                        inv.remove((long) itemNmb);
+                    }
+                }
+
+                for (Object itemTmp : (JSONArray) answer.get("unlocks")) {
+                    JSONObject item = (JSONObject) itemTmp;
+                    String toCompare = item.get("room") + "-" + item.get("unlock") + "-";
+                    boolean add = true;
+                    for (Object o : found) {
+                        JSONArray foundArray = (JSONArray) o;
+                        StringBuilder sb = new StringBuilder();
+                        for (Object o1 : foundArray) {
+                            sb.append(o1.toString());
+                            sb.append("-");
+                        }
+                        if (sb.toString().equals(toCompare)) {
+                            add = false;
+                        }
+                    }
+                    if (add) {
+                        JSONArray foundArray = new JSONArray();
+                        foundArray.add(item.get("room"));
+                        foundArray.add(item.get("unlock"));
+                        found.add(foundArray);
+                    }
+                }
+
+                if (!(boolean) answer.get("repeatable")) {
+                    JSONArray usedArray = new JSONArray();
+                    usedArray.add(roomNmb);
+                    usedArray.add(link.get(answerNmb));
+                    used.add(usedArray);
+                }
+
+                if (((Long) answer.get("goto")).intValue() == -1) {
+                    save(0, 0, true);
+                    System.exit(69);
+                }
+
+                tell(((Long) answer.get("goto")).intValue(), ((Long) answer.get("tell")).intValue());
+            }
+        }
+    }
+    public static class cls {
+        public cls() {
+            System.out.println("\n\r".repeat(100));
             System.out.println("\033[H\033[2J");
         }
     }
-//    public void printScene(int roomNumber, int textNumber) {
-//        System.out.println(scene.get("room"));
-//    }
 }

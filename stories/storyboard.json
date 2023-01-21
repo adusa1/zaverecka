@@ -10,7 +10,8 @@
 						0,
 						1,
 						2,
-						3
+						3,
+						4
 					]
 				},
 				{
@@ -19,7 +20,8 @@
 						0,
 						1,
 						2,
-						3
+						3,
+						4
 					]
 				},
 				{
@@ -28,7 +30,8 @@
 						0,
 						1,
 						2,
-						3
+						3,
+						4
 					]
 				}
 			],
@@ -77,14 +80,30 @@
 					"repeatable": false
 				},
 				{
-					"text": "Podivat se vedle.",
+					"text": "Jit do kuchyne.",
+					"goto": 1,
+					"tell": 5,
+					"requires": [],
+					"gives": [],
+					"takes": [],
+					"unlocks": [
+						{
+							"room": 0,
+							"unlock": 4
+						}
+					],
+					"hidden": false,
+					"repeatable": false
+				},
+				{
+					"text": "Jit do kuchyne.",
 					"goto": 1,
 					"tell": 0,
 					"requires": [],
 					"gives": [],
 					"takes": [],
 					"unlocks": [],
-					"hidden": false,
+					"hidden": true,
 					"repeatable": true
 				}
 			]
@@ -94,7 +113,7 @@
 			"name": "kuchyn",
 			"texts": [
 				{
-					"text": "Vejdu do kuchyne, par policek, zamcena skrin a jeden prokletej prah o ktery jsem si prave ukopl palec!",
+					"text": "Projdu dvermi do kuchyne",
 					"answers": [
 						0,
 						1,
@@ -124,6 +143,14 @@
 				},
 				{
 					"text": "Rozbrecim se jak male decko, tece mi tolik slz ze div nezpusobim povoden... A ono ejhle, zafungovalo to! Mys zapiskala vybehla z nory a nekde se ztratila, uzasne!\nNatahuju se pro svoji dyku, ale jak tam hrabu zase se riznu, ale tentokrate ne o ni, ale o nejaky zvlastni zlaty klic kterej je ostrej jak britva. Beru ho i s dykou a zvedam se od mysi diry.",
+					"answers": [
+						0,
+						1,
+						2
+					]
+				},
+				{
+					"text": "Vejdu do kuchyne, par policek, zamcena skrin a jeden prokletej prah o ktery jsem si prave ukopl palec!",
 					"answers": [
 						0,
 						1,
