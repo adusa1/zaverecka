@@ -6,6 +6,10 @@ import org.json.simple.JSONArray;
 import org.json.simple.parser.ParseException;
 import org.json.simple.parser.JSONParser;
 
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+
 public class Main {
     static JSONArray inv;
     static JSONArray used;
@@ -223,6 +227,9 @@ public class Main {
                     } else {
                         Thread.sleep(40);
                     }
+                    if (i % 3 == 0) {
+                        playDong();
+                    }
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
@@ -404,6 +411,17 @@ public class Main {
 
                 tell(((Long) answer.get("goto")).intValue(), ((Long) answer.get("tell")).intValue());
             }
+        }
+    }
+    public static synchronized void playDong() {
+        try {
+            File f = new File("dependencies/DialougeSound.wav");
+            Clip clip = AudioSystem.getClip();
+            AudioInputStream inputStream = AudioSystem.getAudioInputStream(f.toURI().toURL());
+            clip.open(inputStream);
+            clip.start();
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
         }
     }
     public static class cls {
