@@ -1,6 +1,5 @@
 import java.io.*;
 import java.util.*;
-import java.util.random.RandomGenerator;
 
 import org.json.simple.JSONObject;
 import org.json.simple.JSONArray;
@@ -214,31 +213,16 @@ public class Main {
 
         public static void chance() {
             Random rn = new Random();
-            int chance = rn.nextInt(10 - 0 + 1);
+            int chance = rn.nextInt(100 - 0 + 1);
             switch (chance) {
-                case 0:
-                    System.out.println("Ucítil jsi smrad zkžených vajíček.");
-                    break;
-                case 1:
-                    System.out.println("Šlápnul jsi do louže, a teď máš mokro v botě.");
-                    break;
-                case 2:
-                    System.out.println("Nesmíš zapomenout na cíl hry!");
-                    break;
-                case 3:
-                    System.out.println("Nesmíš zapomenout na cíl hry!");
-                    break;
-                case 4:
-                    System.out.println("Hodně štěstí.");
-                    break;
-                case 5:
-                    System.out.println("Buď opatrný");
-                    break;
-                case 6:
-                    System.out.println("69");
-                    break;
-                default:
-                    break;
+                case 0 -> System.out.println("Ucítil jsi smrad zkžených vajíček.");
+                case 1 -> System.out.println("Šlápnul jsi do louže, a teď máš mokro v botě.");
+                case 2 -> System.out.println("Nesmíš zapomenout na cíl hry!");
+                case 3 -> System.out.println("Nesmíš zapomenout na cíl hry!");
+                case 4 -> System.out.println("Hodně štěstí.");
+                case 5 -> System.out.println("Buď opatrný");
+                case 6 -> System.out.println("69");
+                default -> {}
             }
         }
 
