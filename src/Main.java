@@ -9,7 +9,6 @@ import org.json.simple.parser.JSONParser;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
-import javax.sound.sampled.LineEvent;
 
 public class Main {
     static JSONArray inv;
@@ -418,11 +417,6 @@ public class Main {
         try {
             File f = new File("dependencies/DialougeSound.wav");
             Clip clip = AudioSystem.getClip();
-            clip.addLineListener(event -> {
-                if(LineEvent.Type.STOP.equals(event.getType())) {
-                    clip.close();
-                }
-            });
             AudioInputStream inputStream = AudioSystem.getAudioInputStream(f.toURI().toURL());
             clip.open(inputStream);
             clip.start();
