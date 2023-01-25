@@ -21,6 +21,7 @@ public class Main {
     List<List<Integer>> lists = new ArrayList<>();
 
     public static void main(String[] args) {
+        new cls();
         int textload = 0, roomLoad = 0;
 
         File stories = new File("stories");
@@ -172,6 +173,17 @@ public class Main {
 
             System.out.println("Ulozeno!");
             if (reset) {
+                Random rn = new Random();
+                int cislo = rn.nextInt(5-0+1);
+                switch (cislo) {
+                    case 0 -> System.out.println("Jsi dead");
+                    case 1 -> System.out.println("Snaz se vic");
+                    case 2 -> System.out.println("Game over");
+                    case 3 -> System.out.println("Takze od znova");
+                    case 4 -> System.out.println("Umrel jsi");
+                    case 5 -> System.out.println("Treba priste");
+                    default -> {}
+                }
                 System.out.println("Hra byla resetovana!");
                 System.exit(69);
             }
@@ -273,12 +285,6 @@ public class Main {
         answery.add(-2);
         answery.add(-3);
 
-        System.out.println("-1: Ulozit");
-        System.out.println("-2: Ukoncit");
-        System.out.println("-3: Inventar");
-
-        System.out.println();
-
         Hashtable<Integer, Integer> link = new Hashtable<Integer, Integer>();
         int deductable = 0;
 
@@ -364,7 +370,7 @@ public class Main {
             System.out.println("*: " + answer.get("text") + " (Vyzaduje " + requires + ", chybi " + missing + ")");
         }
 
-        System.out.println();
+        System.out.println("\n----------------\n-1: Ulozit\n-2: Ukoncit\n-3: Inventar\n----------------\n\n");
         System.out.println(message.equals("") ? "" : message);
 
         int answerNmb;
