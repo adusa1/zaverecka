@@ -1,6 +1,5 @@
 import java.io.*;
 import java.util.*;
-import java.util.random.*;
 
 import org.json.simple.JSONObject;
 import org.json.simple.JSONArray;
@@ -21,6 +20,7 @@ public class Main {
     List<List<Integer>> lists = new ArrayList<>();
 
     public static void main(String[] args) {
+        new cls();
         int textload = 0, roomLoad = 0;
 
         File stories = new File("stories");
@@ -172,6 +172,17 @@ public class Main {
 
             System.out.println("Ulozeno!");
             if (reset) {
+                Random rn = new Random();
+                int cislo = rn.nextInt(5-0+1);
+                switch (cislo) {
+                    case 0 -> System.out.println("Jsi dead");
+                    case 1 -> System.out.println("Snaz se vic");
+                    case 2 -> System.out.println("Game over");
+                    case 3 -> System.out.println("Takze od znova");
+                    case 4 -> System.out.println("Umrel jsi");
+                    case 5 -> System.out.println("Treba priste");
+                    default -> {}
+                }
                 System.out.println("Hra byla resetovana!");
                 System.exit(69);
             }
@@ -200,10 +211,6 @@ public class Main {
         tell(roomNmb, textNmb, true, "");
     }
 
-    public static void chance() {
-        System.out.println("HELP!!!");
-    }
-
     public static void tell(int roomNmb, int textNmb) {
         tell(roomNmb, textNmb, false, "");
     }
@@ -215,8 +222,6 @@ public class Main {
         JSONArray answers = (JSONArray) room.get("answers");
 
         new cls();
-
-        chance();
 
         System.out.println("Nachazis se v: " + room.get("name"));
 
@@ -403,38 +408,6 @@ public class Main {
                 }
 
                 if (((Long) answer.get("goto")).intValue() == -1) {
-                    Random rn =new Random();
-            
-                    int cislo= rn.nextInt(5-0+1);
-                    switch (cislo) {
-                        case 0:
-                            System.out.println("Jsi dead");
-                            break;
-                    
-                        case 1:
-                            System.out.println("Snaz se vic");
-                            break;
-                       
-                        case 2:
-                            System.out.println("Game over");
-                            break;
-
-                        case 3:
-                            System.out.println("Takze od znova");
-                            break;
-
-                        case 4:
-                            System.out.println("Umrel jsi");
-                            break;
-
-                        case 5:
-                            System.out.println("Treba priste");
-                
-
-                        default:
-                            break;
-                    }
-
                     save(0, 0, true);
                     System.exit(69);
                 }
