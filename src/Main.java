@@ -6,6 +6,11 @@ import org.json.simple.JSONArray;
 import org.json.simple.parser.ParseException;
 import org.json.simple.parser.JSONParser;
 
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineEvent;
+
 public class Main {
     static JSONArray inv;
     static JSONArray used;
@@ -195,6 +200,10 @@ public class Main {
         tell(roomNmb, textNmb, true, "");
     }
 
+    public static void chance() {
+        System.out.println("HELP!!!");
+    }
+
     public static void tell(int roomNmb, int textNmb) {
         tell(roomNmb, textNmb, false, "");
     }
@@ -206,6 +215,8 @@ public class Main {
         JSONArray answers = (JSONArray) room.get("answers");
 
         new cls();
+
+        chance();
 
         System.out.println("Nachazis se v: " + room.get("name"));
 
@@ -223,6 +234,9 @@ public class Main {
                     } else {
                         Thread.sleep(40);
                     }
+                    if (i % 3 == 0) {
+                        playDong();
+                    }
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
@@ -236,12 +250,6 @@ public class Main {
         answery.add(-1);
         answery.add(-2);
         answery.add(-3);
-
-        System.out.println("-1: Ulozit");
-        System.out.println("-2: Ukoncit");
-        System.out.println("-3: Inventar");
-
-        System.out.println();
 
         Hashtable<Integer, Integer> link = new Hashtable<Integer, Integer>();
         int deductable = 0;
@@ -328,7 +336,7 @@ public class Main {
             System.out.println("*: " + answer.get("text") + " (Vyzaduje " + requires + ", chybi " + missing + ")");
         }
 
-        System.out.println();
+        System.out.println("\n----------------\n-1: Ulozit\n-2: Ukoncit\n-3: Inventar\n----------------\n\n");
         System.out.println(message.equals("") ? "" : message);
 
         int answerNmb;
@@ -404,6 +412,22 @@ public class Main {
 
                 tell(((Long) answer.get("goto")).intValue(), ((Long) answer.get("tell")).intValue());
             }
+        }
+    }
+    public static synchronized void playDong() {
+        try {
+            File f = new File("dependencies/DialougeSound.wav");
+            Clip clip = AudioSystem.getClip();
+            clip.addLineListener(event -> {
+                if(LineEvent.Type.STOP.equals(event.getType())) {
+                    clip.close();
+                }
+            });
+            AudioInputStream inputStream = AudioSystem.getAudioInputStream(f.toURI().toURL());
+            clip.open(inputStream);
+            clip.start();
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
         }
     }
     public static class cls {
