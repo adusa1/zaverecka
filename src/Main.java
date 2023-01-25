@@ -1,5 +1,6 @@
 import java.io.*;
 import java.util.*;
+import java.util.random.RandomGenerator;
 
 import org.json.simple.JSONObject;
 import org.json.simple.JSONArray;
@@ -199,6 +200,36 @@ public class Main {
         tell(roomNmb, textNmb, true, "");
     }
 
+        public static void chance() {
+            Random rn = new Random();
+            int chance = rn.nextInt(10 - 0 + 1);
+            switch (chance) {
+                case 0:
+                    System.out.println("Ucítil jsi smrad zkžených vajíček.");
+                    break;
+                case 1:
+                    System.out.println("Šlápnul jsi do louže, a teď máš mokro v botě.");
+                    break;
+                case 2:
+                    System.out.println("Nesmíš zapomenout na cíl hry!");
+                    break;
+                case 3:
+                    System.out.println("Nesmíš zapomenout na cíl hry!");
+                    break;
+                case 4:
+                    System.out.println("Hodně štěstí.");
+                    break;
+                case 5:
+                    System.out.println("Buď opatrný");
+                    break;
+                case 6:
+                    System.out.println("69");
+                    break;
+                default:
+                    break;
+            }
+        }
+
     public static void tell(int roomNmb, int textNmb) {
         tell(roomNmb, textNmb, false, "");
     }
@@ -213,6 +244,7 @@ public class Main {
 
         System.out.println("Nachazis se v: " + room.get("name"));
 
+        chance();
         // letter by letter printing of text
         if (!skip) {
             String textToPrint = (String) text.get("text");
@@ -226,9 +258,6 @@ public class Main {
                         Thread.sleep(300);
                     } else {
                         Thread.sleep(40);
-                    }
-                    if (i % 3 == 0) {
-                        playDong();
                     }
                 } catch (InterruptedException e) {
                     e.printStackTrace();
