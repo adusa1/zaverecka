@@ -1,5 +1,6 @@
 import java.io.*;
 import java.util.*;
+import java.util.random.*;
 
 import org.json.simple.JSONObject;
 import org.json.simple.JSONArray;
@@ -233,9 +234,6 @@ public class Main {
                     } else {
                         Thread.sleep(40);
                     }
-                    if (i % 3 == 0) {
-                        playDong();
-                    }
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
@@ -405,6 +403,38 @@ public class Main {
                 }
 
                 if (((Long) answer.get("goto")).intValue() == -1) {
+                    Random rn =new Random();
+            
+                    int cislo= rn.nextInt(5-0+1);
+                    switch (cislo) {
+                        case 0:
+                            System.out.println("Jsi dead");
+                            break;
+                    
+                        case 1:
+                            System.out.println("Snaz se vic");
+                            break;
+                       
+                        case 2:
+                            System.out.println("Game over");
+                            break;
+
+                        case 3:
+                            System.out.println("Takze od znova");
+                            break;
+
+                        case 4:
+                            System.out.println("Umrel jsi");
+                            break;
+
+                        case 5:
+                            System.out.println("Treba priste");
+                
+
+                        default:
+                            break;
+                    }
+
                     save(0, 0, true);
                     System.exit(69);
                 }
