@@ -137,13 +137,6 @@ def tell(roomNmb, textNmb, skip=False, message=''):
     # -1 Save -2 Exit, -3 Inventory
     answers = [-1, -2, -3]
 
-    # Always accessible answers
-    print(f'\x1B[3m-1: Ulozit\x1B[0m')
-    print(f'\x1B[3m-2: Ukoncit\x1B[0m')
-    print(f'\x1B[3m-3: Inventar\x1B[0m')
-    
-    print('')
-
     # Answers printing
     link = {}
     deductable = 0
@@ -173,6 +166,12 @@ def tell(roomNmb, textNmb, skip=False, message=''):
         requires = "\033[4m\x1B[3m" + "\033[0m\x1B[0m a \033[4m\x1B[3m".join(itemy) + "\033[0m\x1B[0m"
         missing = "\033[4m\x1B[3m" + "\033[0m\x1B[0m, \033[4m\x1B[3m".join(itemyMissing) + "\033[0m\x1B[0m"
         print(f'\x1B[3m*: {answere["text"]} (Vyzaduje: \x1B[0m{requires}\x1B[3m, chybi: \x1B[0m{missing}\x1B[3m)\x1B[0m')
+
+    print('')
+    # Always accessible answers
+    print(f'\x1B[3m-1: Ulozit\x1B[0m')
+    print(f'\x1B[3m-2: Ukoncit\x1B[0m')
+    print(f'\x1B[3m-3: Inventar\x1B[0m')
 
     print('\n' if not message else '')
     if message != '':
@@ -210,7 +209,7 @@ def tell(roomNmb, textNmb, skip=False, message=''):
                 found.queue[0].append([item['room'], item['unlock']])
 
         if not answer["repeatable"]:
-            used.queue[0].append([roomNmb, answerNmb])
+            used.queue[0].append([roomNmb, link[answerNmb]])
 
         if answer["goto"] == -1:
             save(0, 0, reset=True)
