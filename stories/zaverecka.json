@@ -1,0 +1,653 @@
+{
+	"story": [
+		{
+			"room": 0,
+			"name": "PredDomem",
+			"texts": [
+				{
+					"text": "Král tě poslal zabít mága, který bojoval proti koruně, to vše se však zvrtlo, když jsi vstoupil do jeho pasti. Jsi v kapesní dimenzi, ale někde by tady měl být způsob jak utéct. Jak těžký to může bejt? No uvidíme. Jsi před rozpadajícím se domem obehnaným vysokou zdí, obloha je zatažená a dům vypadá, že má velkou zehradu.",
+					"answers": [
+						0,
+						1,
+						2
+					]
+				},
+				{
+					"text": "Jsi zpátky před domem",
+					"answers": [
+						0,
+						1,
+						2
+					]
+				},
+				{
+					"text": "Zpátky na zemi před domem",
+					"answers": [
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"answers": [
+				{
+					"text": "Jít dovnitř",
+					"goto": 7,
+					"tell": 0,
+					"requires": [],
+					"gives": [],
+					"takes": [],
+					"unlocks": [],
+					"hidden": false,
+					"repeatable": true
+				},
+				{
+					"text": "Jít na zahradu",
+					"goto": 3,
+					"tell": 0,
+					"requires": [],
+					"gives": [],
+					"takes": [],
+					"unlocks": [],
+					"hidden": false,
+					"repeatable": true
+				},
+				{
+					"text": "Vylézt na střechu po žebříku",
+					"goto": 1,
+					"tell": 0,
+					"requires": [1],
+					"gives": [],
+					"takes": [],
+					"unlocks": [],
+					"hidden": true,
+					"repeatable": true
+				}
+			]
+		},
+		{
+			"room": 1,
+			"name": "Strecha",
+			"texts": [
+				{
+					"text": "Střecha vypadá velmi staře a ztrouchnivěle, musíš se pohybovat opatrně.",
+					"answers": [
+						0,
+						1,
+						2
+					]
+				},
+				{
+					"text": "Vidíš kočku",
+					"answers": [
+						0,
+						1,
+						2
+					]
+				},
+				{
+					"text": "Jsi na střeše u žebříku dolů",
+					"answers": [
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"answers": [
+				{
+					"text": "Jít dolů",
+					"goto": 0,
+					"tell": 2,
+					"requires": [],
+					"gives": [],
+					"takes": [],
+					"unlocks": [],
+					"hidden": false,
+					"repeatable": true
+				},
+				{
+					"text": "Rozhlédnout se",
+					"goto": 1,
+					"tell": 1,
+					"requires": [],
+					"gives": [],
+					"takes": [],
+					"unlocks": [{"room": 1, "unlock": 2}],
+					"hidden": false,
+					"repeatable": false
+				},
+				{
+					"text": "Jít za kočkou",
+					"goto": 2,
+					"tell": 0,
+					"requires": [],
+					"gives": [],
+					"takes": [],
+					"unlocks": [],
+					"hidden": true,
+					"repeatable": true
+				}
+			]
+		},
+		{
+			"room": 2,
+			"name": "Kocka",
+			"texts": [
+				{
+					"text": "Na kraji střechy sedí šedá kočka s hnědýma očima. Je mazlivá ale vypadá hladově.",
+					"answers": [
+						0,
+						1,
+						2,
+						3
+					]
+				},
+								{
+					"text": "Mazlil jsi se s kočkou a ta spokojeně vrněla ale krom vrnění bylo slyšet i hlasité kručení v jejím bříšku.",
+					"answers": [
+						0,
+						1,
+						2,
+						3
+					]
+				},
+								{
+					"text": "Kočka u sebe měla malou plyšovou myšku, chvilku sis s ní hrál a kočka vypadá docela šťastně",
+					"answers": [
+						0,
+						1,
+						2,
+						3
+					]
+				},
+								{
+					"text": "Na kraji střechy sedí šedá kočka s hnědýma očima. Je mazlivá ale vypadá hladově.",
+					"answers": [
+						0,
+						1,
+						2,
+						3
+					]
+				}
+			],
+			"answers": [
+				{
+					"text": "Jít zpátky",
+					"goto": 1,
+					"tell": 2,
+					"requires": [],
+					"gives": [],
+					"takes": [],
+					"unlocks": [],
+					"hidden": false,
+					"repeatable": true
+				},
+								{
+					"text": "Pomazlit",
+					"goto": 2,
+					"tell": 1,
+					"requires": [],
+					"gives": [],
+					"takes": [],
+					"unlocks": [],
+					"hidden": false,
+					"repeatable": true
+				},
+								{
+					"text": "Hrát si",
+					"goto": 2,
+					"tell": 2,
+					"requires": [],
+					"gives": [],
+					"takes": [],
+					"unlocks": [],
+					"hidden": false,
+					"repeatable": true
+				},
+								{
+					"text": "Nakrmit palačinkou",
+					"goto": 2,
+					"tell": 3,
+					"requires": [],
+					"gives": [0],
+					"takes": [],
+					"unlocks": [],
+					"hidden": true,
+					"repeatable": false
+				}
+			]
+		},
+		{
+			"room": 3,
+			"name": "Zahrada",
+			"texts": [
+				{
+					"text": "Jsi na zahradě, vzadu za barákem je kůlna, uprostřed zahrady strom a vedle něj studna, všude jsou vysoké zdi, ale v jedné z nich je branka",
+					"answers": [
+						0,
+						1,
+						2,
+						3,
+						4
+					]
+				},
+				{
+					"text": "Zpátky na zahradě",
+					"answers": [
+						0,
+						1,
+						2,
+						3,
+						4
+					]
+				},
+				{
+					"text": "Dveře jsou zablokované, ale oknem by šlo vlézt dovnitř",
+					"answers": [
+						0,
+						1,
+						2,
+						3,
+						4
+					]
+				},
+				{
+					"text": "",
+					"answers": [
+						0,
+						1,
+						2,
+						3,
+						4
+					]
+				}
+			],
+			"answers": [
+				{
+					"text": "Jít do kůlny",
+					"goto": 3,
+					"tell": 1,
+					"requires": [],
+					"gives": [],
+					"takes": [],
+					"unlocks": [],
+					"hidden": false,
+					"repeatable": false
+				},
+				{
+					"text": "Jít ke studně",
+					"goto": 6,
+					"tell": 0,
+					"requires": [],
+					"gives": [],
+					"takes": [],
+					"unlocks": [],
+					"hidden": false,
+					"repeatable": true
+				},
+				{
+					"text": "Jít k brance",
+					"goto": 4,
+					"tell": 0,
+					"requires": [],
+					"gives": [],
+					"takes": [],
+					"unlocks": [],
+					"hidden": false,
+					"repeatable": true
+				},
+				{
+					"text": "jít zpátky před dům",
+					"goto": 0,
+					"tell": 1,
+					"requires": [],
+					"gives": [],
+					"takes": [],
+					"unlocks": [],
+					"hidden": false,
+					"repeatable": true
+				},
+				{
+					"text": "Vyšplhat po žebříku do kůlny",
+					"goto": 5,
+					"tell": 0,
+					"requires": [1],
+					"gives": [],
+					"takes": [],
+					"unlocks": [],
+					"hidden": true,
+					"repeatable": true
+				}
+			]
+		},
+		{
+			"room": 4,
+			"name": "Brána",
+			"texts": [
+				{
+					"text": "Stojíš před pevnou brankou do ulice, zdá se, že za ní je jen další zeď, vedle je o stěnu opřený žebřík",
+					"answers": [
+						0,
+						1
+					]
+				},
+				{
+					"text": "Okolo není nic moc zajímavého, ale na zemi leží  žebřík",
+					"answers": [
+						0,
+						1
+					]
+				},
+				{
+					"text": "Máš žebřík",
+					"answers": [
+						0,
+						1
+					]
+				}
+			],
+			"answers": [
+				{
+					"text": "Jít zpátky na zahradu",
+					"goto": 3,
+					"tell": 1,
+					"requires": [],
+					"gives": [],
+					"takes": [],
+					"unlocks": [],
+					"hidden": false,
+					"repeatable": true
+				},			
+				{
+					"text": "Zvednout žebřík",
+					"goto": 4,
+					"tell": 2,
+					"requires": [],
+					"gives": [1],
+					"takes": [],
+					"unlocks": [{"room": 0, "unlock": 2},{"room": 3, "unlock": 4}],
+					"hidden": false,
+					"repeatable": false
+				}
+			]
+		},
+		{
+			"room": 5,
+			"name": "Kůlna",
+			"texts": [
+				{
+					"text": "Jsi v kůlně, zdá se být docela stará, ale snad tu bude něco užitečného",
+					"answers": [
+						0,
+						1,
+						2,
+						3
+					]
+				},
+				{
+					"text": "Vidíš hromádku uhlí a sekeru opřenou o stěnu",
+					"answers": [
+						0,
+						1,
+						2,
+						3
+					]
+				},
+				{
+					"text": "Sekera co je tupán jak poleno, snad j něčemu bude i tak",
+					"answers": [
+						0,
+						1,
+						2,
+						3
+					]
+				},
+				{
+					"text": "Uhlí...černé, hořlavé uhlí",
+					"answers": [
+						0,
+						1,
+						2,
+						3
+					]
+				}
+			],
+			"answers": [
+				{
+					"text": "Jít zpátky na zahradu",
+					"goto": 3,
+					"tell": 1,
+					"requires": [],
+					"gives": [],
+					"takes": [],
+					"unlocks": [],
+					"hidden": false,
+					"repeatable": true
+				},
+				{
+					"text": "Rozhlédnout se",
+					"goto": 5,
+					"tell": 1,
+					"requires": [],
+					"gives": [],
+					"takes": [],
+					"unlocks": [{"room": 5, "unlock":2},{"room": 5, "unlock":3}],
+					"hidden": false,
+					"repeatable": false
+				},
+				{
+					"text": "Sebrat sekeru",
+					"goto": 5,
+					"tell": 2,
+					"requires": [],
+					"gives": [3],
+					"takes": [],
+					"unlocks": [],
+					"hidden": true,
+					"repeatable": false
+				},
+				{
+					"text": "Sebrat uhlí",
+					"goto": 5,
+					"tell": 3,
+					"requires": [],
+					"gives": [2],
+					"takes": [],
+					"unlocks": [],
+					"hidden": true,
+					"repeatable": false
+				}
+			]
+		},
+		{
+			"room": 6,
+			"name": "Studna",
+			"texts": [
+				{
+					"text": "Studna vypadá staře, ale dole je nějaká voda",
+					"answers": [
+						0,
+						1
+					]
+				}
+			],
+			"answers": [
+				{
+					"text": "Jít zpátky",
+					"goto": 3,
+					"tell": 1,
+					"requires": [],
+					"gives": [],
+					"takes": [],
+					"unlocks": [],
+					"hidden": false,
+					"repeatable": true
+				},
+								{
+					"text": "Vytáhnout kýbl s vodou",
+					"goto": 3,
+					"tell": 1,
+					"requires": [],
+					"gives": [4],
+					"takes": [],
+					"unlocks": [],
+					"hidden": false,
+					"repeatable": false
+				}
+			]
+		},
+		{
+			"room": 7,
+			"name": "Síň",
+			"texts": [
+				{
+					"text": "",
+					"answers": [
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"answers": [
+				{
+					"text": "Jít do kůlny",
+					"goto": 1,
+					"tell": 2,
+					"requires": [],
+					"gives": [],
+					"takes": [],
+					"unlocks": [],
+					"hidden": false,
+					"repeatable": false
+				}
+			]
+		},
+		{
+			"room": 8,
+			"name": "Záchod",
+			"texts": [
+				{
+					"text": "",
+					"answers": [
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"answers": [
+				{
+					"text": "Jít do kůlny",
+					"goto": 1,
+					"tell": 2,
+					"requires": [],
+					"gives": [],
+					"takes": [],
+					"unlocks": [],
+					"hidden": false,
+					"repeatable": false
+				}
+			]
+		},
+		{
+			"room": 9,
+			"name": "Kuchyň",
+			"texts": [
+				{
+					"text": "",
+					"answers": [
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"answers": [
+				{
+					"text": "Jít do kůlny",
+					"goto": 1,
+					"tell": 2,
+					"requires": [],
+					"gives": [],
+					"takes": [],
+					"unlocks": [],
+					"hidden": false,
+					"repeatable": false
+				}
+			]
+		},
+		{
+			"room": 10,
+			"name": "Sklep",
+			"texts": [
+				{
+					"text": "",
+					"answers": [
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"answers": [
+				{
+					"text": "Jít do kůlny",
+					"goto": 1,
+					"tell": 2,
+					"requires": [],
+					"gives": [],
+					"takes": [],
+					"unlocks": [],
+					"hidden": false,
+					"repeatable": false
+				}
+			]
+		}	
+	],
+	"inventory": [
+		{
+			"id": 0,
+			"name": "Dyka",
+			"text": "Stribrna dyka, pekne ostra"
+		},
+		{
+			"id": 1,
+			"name": "Zebrik",
+			"text": "Polorozpadly, ale bude drzet"
+		},
+		{
+			"id": 2,
+			"name": "Uhli",
+			"text": "Jeste, ze aspon uhli nemuze ztrouchnivet"
+		},
+		{
+			"id": 3,
+			"name": "Sekera",
+			"text": "Tupa jak poleno, snad k necemu bude"
+		},
+		{
+			"id": 4,
+			"name": "Kybl s vodou",
+			"text": "Pomlacenej kybl s vodou"
+		},
+		{
+			"id": 5,
+			"name": "Lano",
+			"text": "Vypada stare, ale snad vydrzi"
+		},
+		{
+			"id": 6,
+			"name": "Rezavy klic",
+			"text": "Rezavy klic, snad se nezlomi v klicove dirce "
+		},
+		{
+			"id": 7,
+			"name": "Palacinka",
+			"text": "Do zlatova upecena palacinka, skoda ze tu neni marmelada"
+		}
+	],
+	"id": 420696,
+	"name": "Zaverecka"
+}
