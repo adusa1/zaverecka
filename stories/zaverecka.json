@@ -2,7 +2,7 @@
 	"story": [
 		{
 			"room": 0,
-			"name": "PredDomem",
+			"name": "Před domem",
 			"texts": [
 				{
 					"text": "Král tě poslal zabít mága, který bojoval proti koruně, to vše se však zvrtlo, když jsi vstoupil do jeho pasti. Jsi v kapesní dimenzi, ale někde by tady měl být způsob jak utéct. Jak těžký to může bejt? No uvidíme. Jsi před rozpadajícím se domem obehnaným vysokou zdí, obloha je zatažená a dům vypadá, že má velkou zehradu.",
@@ -67,7 +67,7 @@
 		},
 		{
 			"room": 1,
-			"name": "Strecha",
+			"name": "Střecha",
 			"texts": [
 				{
 					"text": "Střecha vypadá velmi staře a ztrouchnivěle, musíš se pohybovat opatrně.",
@@ -132,7 +132,7 @@
 		},
 		{
 			"room": 2,
-			"name": "Kocka",
+			"name": "Kočka",
 			"texts": [
 				{
 					"text": "Na kraji střechy sedí šedá kočka s hnědýma očima. Je mazlivá ale vypadá hladově.",
