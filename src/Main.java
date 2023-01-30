@@ -20,7 +20,7 @@ public class Main {
     List<List<Integer>> lists = new ArrayList<>();
 
     public static void main(String[] args) {
-        new cls();
+        cls();
         int textload = 0, roomLoad = 0;
 
         File stories = new File("stories");
@@ -144,7 +144,7 @@ public class Main {
     }
 
     public static void save(int roomNmb, int textNmb, boolean reset) {
-        new cls();
+        cls();
         System.out.println("Ukladani hry...");
 
         File saves = new File("saves");
@@ -194,7 +194,7 @@ public class Main {
     }
 
     public static void inventory(int roomNmb, int textNmb) {
-        new cls();
+        cls();
         System.out.println("Polozky v inventari:");
 
         if (inv.size() == 0) {
@@ -211,20 +211,20 @@ public class Main {
         tell(roomNmb, textNmb, true, "");
     }
 
-        public static void chance() {
-            Random rn = new Random();
-            int chance = rn.nextInt(100 - 0 + 1);
-            switch (chance) {
-                case 0 -> System.out.println("Ucítil jsi smrad zkžených vajíček.");
-                case 1 -> System.out.println("Šlápnul jsi do louže, a teď máš mokro v botě.");
-                case 2 -> System.out.println("Nesmíš zapomenout na cíl hry!");
-                case 3 -> System.out.println("Nesmíš zapomenout na cíl hry!");
-                case 4 -> System.out.println("Hodně štěstí.");
-                case 5 -> System.out.println("Buď opatrný");
-                case 6 -> System.out.println("69");
-                default -> {}
-            }
+    public static void chance() {
+        Random rn = new Random();
+        int chance = rn.nextInt(100 - 0 + 1);
+        switch (chance) {
+            case 0 -> System.out.println("Ucítil jsi smrad zkžených vajíček.");
+            case 1 -> System.out.println("Šlápnul jsi do louže, a teď máš mokro v botě.");
+            case 2 -> System.out.println("Nesmíš zapomenout na cíl hry!");
+            case 3 -> System.out.println("Nesmíš zapomenout na cíl hry!");
+            case 4 -> System.out.println("Hodně štěstí.");
+            case 5 -> System.out.println("Buď opatrný");
+            case 6 -> System.out.println("69");
+            default -> {}
         }
+    }
 
     public static void tell(int roomNmb, int textNmb) {
         tell(roomNmb, textNmb, false, "");
@@ -236,7 +236,7 @@ public class Main {
         JSONObject text = (JSONObject) texts.get(textNmb);
         JSONArray answers = (JSONArray) room.get("answers");
 
-        new cls();
+        cls();
 
         System.out.println("Nachazis se v: " + room.get("name"));
 
@@ -443,10 +443,8 @@ public class Main {
             System.err.println(e.getMessage());
         }
     }
-    public static class cls {
-        public cls() {
-            System.out.println("\n\r".repeat(100));
-            System.out.println("\033[H\033[2J");
-        }
+    public static void cls() {
+        System.out.println("\n\r".repeat(100));
+        System.out.println("\033[H\033[2J");
     }
 }
