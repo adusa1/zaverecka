@@ -34,7 +34,7 @@ public class Main {
 
         List<String> results = new ArrayList<String>();
 
-        File[] files = new File("stories").listFiles();
+        File[] files = stories.listFiles();
 
         assert files != null;
         for (File file : files) {
