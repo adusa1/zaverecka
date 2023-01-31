@@ -96,7 +96,7 @@
 			],
 			"answers": [
 				{
-					"text": "Jít dolů",
+					"text": "Slézt dolů",
 					"goto": 0,
 					"tell": 2,
 					"requires": [],
@@ -162,7 +162,7 @@
 					]
 				},
 								{
-					"text": "Na kraji střechy sedí šedá kočka s hnědýma očima. Je mazlivá ale vypadá hladově.",
+					"text": "Podáš palačinku kočce, které to zhltla, anis nemrk. Začala se k tobě lísat a po chvilce odběhla a brátila se s malou brašničkou v tlamě. Najdeš v ní Stříbrnou dýku",
 					"answers": [
 						0,
 						1,
@@ -212,7 +212,7 @@
 					"requires": [],
 					"gives": [0],
 					"takes": [],
-					"unlocks": [],
+					"unlocks": [{"room": 10, "unlocks": 1}],
 					"hidden": true,
 					"repeatable": false
 				}
@@ -465,7 +465,14 @@
 			"name": "Studna",
 			"texts": [
 				{
-					"text": "Studna vypadá staře, ale dole je nějaká voda",
+					"text": "Studna vypadá staře, ale dole je nějaká voda a kýbl.",
+					"answers": [
+						0,
+						1
+					]
+				},
+				{
+					"text": "Vytáhls kýbl s vodou. Je docela potlučenej, ale alespoň není děravej.",
 					"answers": [
 						0,
 						1
@@ -486,8 +493,8 @@
 				},
 								{
 					"text": "Vytáhnout kýbl s vodou",
-					"goto": 3,
-					"tell": 1,
+					"goto": 6,
+					"tell": 0,
 					"requires": [],
 					"gives": [4],
 					"takes": [],
@@ -502,25 +509,81 @@
 			"name": "Síň",
 			"texts": [
 				{
-					"text": "",
+					"text": "Vnitřek vypadá staře a zanedbaně. Kdyby ve střeše nebyli díry, tak by tam bylo šero.",
 					"answers": [
 						0,
 						1,
-						2
+						2,
+						3,
+						4
+					]
+				},
+				{
+					"text": "Jsi zpátky v hlavní síni",
+					"answers": [
+						0,
+						1,
+						2,
+						3,
+						4
 					]
 				}
 			],
 			"answers": [
 				{
-					"text": "Jít do kůlny",
-					"goto": 1,
-					"tell": 2,
+					"text": "Jít ven",
+					"goto": 0,
+					"tell": 1,
 					"requires": [],
 					"gives": [],
 					"takes": [],
 					"unlocks": [],
 					"hidden": false,
-					"repeatable": false
+					"repeatable": true
+				},
+				{
+					"text": "Jít na záchod",
+					"goto": 8,
+					"tell": 0,
+					"requires": [3],
+					"gives": [],
+					"takes": [],
+					"unlocks": [],
+					"hidden": true,
+					"repeatable": true
+				},
+				{
+					"text": "Jít do kuchyně",
+					"goto": 9,
+					"tell": 0,
+					"requires": [],
+					"gives": [],
+					"takes": [],
+					"unlocks": [],
+					"hidden": false,
+					"repeatable": true
+				},
+				{
+					"text": "Osekat prkna blokující záchod sekerou",
+					"goto": 10,
+					"tell": 0,
+					"requires": [6],
+					"gives": [],
+					"takes": [],
+					"unlocks": [],
+					"hidden": false,
+					"repeatable": true
+				},
+				{
+					"text": "Odemknout dveře do sklepa a vejít tam",
+					"goto": 8,
+					"tell": 0,
+					"requires": [6],
+					"gives": [],
+					"takes": [],
+					"unlocks": [],
+					"hidden": true,
+					"repeatable": true
 				}
 			]
 		},
@@ -529,23 +592,40 @@
 			"name": "Záchod",
 			"texts": [
 				{
-					"text": "",
+					"text": "Záchod je roztřískanej a spousta kachliček je rozbitá",
 					"answers": [
 						0,
-						1,
-						2
+						1
+					]
+				},
+				{
+					"text": "Našel jsi na zemi rezavý klíč a zbytky něčeho, čeho se ti ani nechce dotýkat za záchodem.",
+					"answers": [
+						0,
+						1
 					]
 				}
 			],
 			"answers": [
 				{
-					"text": "Jít do kůlny",
+					"text": "Jít zpátky do síně",
 					"goto": 1,
 					"tell": 2,
 					"requires": [],
 					"gives": [],
 					"takes": [],
 					"unlocks": [],
+					"hidden": false,
+					"repeatable": false
+				},
+				{
+					"text": "Kouknout se okolo",
+					"goto": 8,
+					"tell": 1,
+					"requires": [],
+					"gives": [6],
+					"takes": [],
+					"unlocks": [{"room": 7, "unlocks": 4}],
 					"hidden": false,
 					"repeatable": false
 				}
@@ -556,24 +636,41 @@
 			"name": "Kuchyň",
 			"texts": [
 				{
-					"text": "",
+					"text": "Kuchyň je rozpadlá a špinavá. U kulatého stolu leží rozlámané židle a o kousek dál rozpadlá knihovna. Jediné co tam zbýva je pánev a v jedné poličce jsou palačinky v prášku. Palačinky by byli nice, ale chce to někde sehnat vodu, ať nejsou jen prášek a nějak zapálit oheň pod pánví.",
 					"answers": [
 						0,
-						1,
-						2
+						1
+					]
+				},
+				{
+					"text": "Škoda, že tu není, co by na tu palačinku šlo dát. Nu což, jedné hladové kamarádce to snad chutnat bude.",
+					"answers": [
+						0,
+						1
 					]
 				}
 			],
 			"answers": [
 				{
-					"text": "Jít do kůlny",
-					"goto": 1,
-					"tell": 2,
+					"text": "Jít zpátky do síně",
+					"goto": 7,
+					"tell": 1,
 					"requires": [],
 					"gives": [],
 					"takes": [],
 					"unlocks": [],
 					"hidden": false,
+					"repeatable": true
+				},
+				{
+					"text": "Uvařit palačinku",
+					"goto": 9,
+					"tell": 1,
+					"requires": [2, 4],
+					"gives": [],
+					"takes": [],
+					"unlocks": [{"room": 2, "unlock": 3}],
+					"hidden": true,
 					"repeatable": false
 				}
 			]
@@ -583,24 +680,34 @@
 			"name": "Sklep",
 			"texts": [
 				{
-					"text": "",
+					"text": "Ve sklepě je jen namalovaný kruh na zemi se srdcem uprostřed, to musí být to, co tě tu drží. Sekera tomu srdci však nic nedělá, chtělo by to něco ostřejšího.",
 					"answers": [
 						0,
-						1,
-						2
+						1
 					]
 				}
 			],
 			"answers": [
 				{
-					"text": "Jít do kůlny",
-					"goto": 1,
-					"tell": 2,
+					"text": "Jít zpátky do síně",
+					"goto": 7,
+					"tell": 1,
 					"requires": [],
 					"gives": [],
 					"takes": [],
 					"unlocks": [],
 					"hidden": false,
+					"repeatable": true
+				},
+				{
+					"text": "Probodnout srdce dýkou",
+					"goto": 1,
+					"tell": 0,
+					"requires": [0],
+					"gives": [],
+					"takes": [],
+					"unlocks": [],
+					"hidden": true,
 					"repeatable": false
 				}
 			]
@@ -609,17 +716,17 @@
 	"inventory": [
 		{
 			"id": 0,
-			"name": "Dyka",
+			"name": "Dýka",
 			"text": "Stribrna dyka, pekne ostra"
 		},
 		{
 			"id": 1,
-			"name": "Zebrik",
+			"name": "Žebřík",
 			"text": "Polorozpadly, ale bude drzet"
 		},
 		{
 			"id": 2,
-			"name": "Uhli",
+			"name": "Uhlí",
 			"text": "Jeste, ze aspon uhli nemuze ztrouchnivet"
 		},
 		{
@@ -629,7 +736,7 @@
 		},
 		{
 			"id": 4,
-			"name": "Kybl s vodou",
+			"name": "Kýbl s vodou",
 			"text": "Pomlacenej kybl s vodou"
 		},
 		{
@@ -639,12 +746,12 @@
 		},
 		{
 			"id": 6,
-			"name": "Rezavy klic",
+			"name": "Rezavý klíč",
 			"text": "Rezavy klic, snad se nezlomi v klicove dirce "
 		},
 		{
 			"id": 7,
-			"name": "Palacinka",
+			"name": "Palačinka",
 			"text": "Do zlatova upecena palacinka, skoda ze tu neni marmelada"
 		}
 	],
