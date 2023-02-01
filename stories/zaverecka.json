@@ -400,7 +400,7 @@
 			"name": "Kůlna",
 			"texts": [
 				{
-					"text": "Jsi v kůlně, zdá se být docela stará, ale snad tu bude něco užitečného",
+					"text": "Jsi v kůlně, zdá se být docela stará, ale snad tu bude něco užitečného.",
 					"answers": [
 						0,
 						1,
@@ -409,7 +409,7 @@
 					]
 				},
 				{
-					"text": "Vidíš hromádku uhlí a sekeru opřenou o stěnu",
+					"text": "Vidíš hromádku uhlí a sekeru opřenou o stěnu.",
 					"answers": [
 						0,
 						1,
@@ -418,7 +418,7 @@
 					]
 				},
 				{
-					"text": "Sekera co je tupán jak poleno, snad j něčemu bude i tak",
+					"text": "Sekera co je tupán jak poleno, snad j něčemu bude i tak.",
 					"answers": [
 						0,
 						1,
@@ -427,7 +427,7 @@
 					]
 				},
 				{
-					"text": "Uhlí...černé, hořlavé uhlí",
+					"text": "Uhlí...černé, hořlavé uhlí.",
 					"answers": [
 						0,
 						1,
@@ -615,7 +615,7 @@
 			"name": "Záchod",
 			"texts": [
 				{
-					"text": "Záchod je roztřískanej a spousta kachliček je rozbitá",
+					"text": "Záchod je roztřískanej a spousta kachliček je rozbitá.",
 					"answers": [
 						0,
 						1
