@@ -21,7 +21,7 @@
 					]
 				},
 				{
-					"text": "Zpátky na zemi před domem",
+					"text": "Zpátky na zemi před domem.",
 					"answers": [
 						0,
 						1,
@@ -74,23 +74,35 @@
 					"answers": [
 						0,
 						1,
-						2
+						2,
+						3
 					]
 				},
 				{
-					"text": "Vidíš kočku",
+					"text": "Vidíš kočku, jak sedí na kraji střechy.",
 					"answers": [
 						0,
 						1,
-						2
+						2,
+						3
 					]
 				},
 				{
-					"text": "Jsi na střeše u žebříku dolů",
+					"text": "Jsi na střeše u žebříku dolů.",
 					"answers": [
 						0,
 						1,
-						2
+						2,
+						3
+					]
+				},
+				{
+					"text": "Pspsps, ani čičičiči, nefungujou. Dál si tam sedí.",
+					"answers": [
+						0,
+						1,
+						2,
+						3
 					]
 				}
 			],
@@ -113,7 +125,7 @@
 					"requires": [],
 					"gives": [],
 					"takes": [],
-					"unlocks": [{"room": 1, "unlock": 2}],
+					"unlocks": [{"room": 1, "unlock": 2}{"room": 1, "unlock": 3}],
 					"hidden": false,
 					"repeatable": false
 				},
@@ -127,6 +139,17 @@
 					"unlocks": [],
 					"hidden": true,
 					"repeatable": true
+				},
+				{
+					"text": "Přivolat kočku.",
+					"goto": 1,
+					"tell": 3,
+					"requires": [],
+					"gives": [],
+					"takes": [],
+					"unlocks": [],
+					"hidden": true,
+					"repeatable": false
 				}
 			]
 		},
@@ -153,7 +176,7 @@
 					]
 				},
 								{
-					"text": "Kočka u sebe měla malou plyšovou myšku, chvilku sis s ní hrál a kočka vypadá docela šťastně",
+					"text": "Kočka u sebe měla malou plyšovou myšku, chvilku sis s ní hrál a kočka vypadá docela šťastně.",
 					"answers": [
 						0,
 						1,
@@ -162,7 +185,7 @@
 					]
 				},
 								{
-					"text": "Podáš palačinku kočce, které to zhltla, anis nemrk. Začala se k tobě lísat a po chvilce odběhla a brátila se s malou brašničkou v tlamě. Najdeš v ní Stříbrnou dýku",
+					"text": "Podáš palačinku kočce, které to zhltla, anis nemrk. Začala se k tobě lísat a po chvilce odběhla a brátila se s malou brašničkou v tlamě. Najdeš v ní Stříbrnou dýku.",
 					"answers": [
 						0,
 						1,
@@ -223,7 +246,7 @@
 			"name": "Zahrada",
 			"texts": [
 				{
-					"text": "Jsi na zahradě, vzadu za barákem je kůlna, uprostřed zahrady strom a vedle něj studna, všude jsou vysoké zdi, ale v jedné z nich je branka",
+					"text": "Jsi na zahradě, vzadu za barákem je kůlna, uprostřed zahrady strom a vedle něj studna, všude jsou vysoké zdi, ale v jedné z nich je branka.",
 					"answers": [
 						0,
 						1,
@@ -233,7 +256,7 @@
 					]
 				},
 				{
-					"text": "Zpátky na zahradě",
+					"text": "Zpátky na zahradě.",
 					"answers": [
 						0,
 						1,
@@ -243,7 +266,7 @@
 					]
 				},
 				{
-					"text": "Dveře jsou zablokované, ale oknem by šlo vlézt dovnitř",
+					"text": "Dveře jsou zablokované, ale oknem by šlo vlézt dovnitř.",
 					"answers": [
 						0,
 						1,
@@ -326,21 +349,21 @@
 			"name": "Brána",
 			"texts": [
 				{
-					"text": "Stojíš před pevnou brankou do ulice, zdá se, že za ní je jen další zeď, vedle je o stěnu opřený žebřík",
+					"text": "Stojíš před pevnou brankou do ulice, zdá se, že za ní je jen další zeď, vedle je o stěnu opřený žebřík.",
 					"answers": [
 						0,
 						1
 					]
 				},
 				{
-					"text": "Okolo není nic moc zajímavého, ale na zemi leží  žebřík",
+					"text": "Okolo není nic moc zajímavého, ale na zemi leží  žebřík.",
 					"answers": [
 						0,
 						1
 					]
 				},
 				{
-					"text": "Máš žebřík",
+					"text": "Máš žebřík, je polorozpadlý, ale měl bz držet.",
 					"answers": [
 						0,
 						1
@@ -717,42 +740,42 @@
 		{
 			"id": 0,
 			"name": "Dýka",
-			"text": "Stribrna dyka, pekne ostra"
+			"text": "Stříbrná dýka, docela ostrá."
 		},
 		{
 			"id": 1,
 			"name": "Žebřík",
-			"text": "Polorozpadly, ale bude drzet"
+			"text": "Je polorozpadlý, ale bude držet."
 		},
 		{
 			"id": 2,
 			"name": "Uhlí",
-			"text": "Jeste, ze aspon uhli nemuze ztrouchnivet"
+			"text": "Černé, neyajímavé uhlí."
 		},
 		{
 			"id": 3,
 			"name": "Sekera",
-			"text": "Tupa jak poleno, snad k necemu bude"
+			"text": "Tupá jak poleno, snad k nečemu i tak bude."
 		},
 		{
 			"id": 4,
 			"name": "Kýbl s vodou",
-			"text": "Pomlacenej kybl s vodou"
+			"text": "Pomlácenej kýbl s vodou."
 		},
 		{
 			"id": 5,
 			"name": "Lano",
-			"text": "Vypada stare, ale snad vydrzi"
+			"text": "Vzpadá staře, ale není použitý v kódu, LOL"
 		},
 		{
 			"id": 6,
 			"name": "Rezavý klíč",
-			"text": "Rezavy klic, snad se nezlomi v klicove dirce "
+			"text": "Snad se neylomí v klíčové dirce."
 		},
 		{
 			"id": 7,
 			"name": "Palačinka",
-			"text": "Do zlatova upecena palacinka, skoda ze tu neni marmelada"
+			"text": "Do zlatova upečená palačinka. Škoda že tu není marmeláda"
 		}
 	],
 	"id": 420696,
